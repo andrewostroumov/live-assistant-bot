@@ -42,9 +42,7 @@ after "deploy:finished", "initialize"
 task :initialize do
   on roles(:app) do
     within "#{current_path}" do
-      with assistant_env: :production do
-        execute("ruby init.rb &")
-      end
+      execute("ASSISTANT_ENV=production ruby init.rb &")
     end
   end
 end

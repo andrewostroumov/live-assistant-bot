@@ -3,8 +3,6 @@ require_relative "transaction"
 
 token = ENV["TELEGRAM_TOKEN"]
 
-p ENV
-
 database_config = YAML.load_file("database.yml")
 logger = Logger.new(STDOUT)
 
@@ -20,7 +18,7 @@ Telegram::Bot::Client.run(token, logger: logger) do |bot|
       place = match_data[2]
       # Transaction.create(amount: amount, place: place)
       # bot.api.send_message(chat_id: message.chat.id, text: "OK", reply_markup: { keyboard: [[{ text: "Request Location", request_location: true }]] }.to_json)
-      bot.api.send_message(chat_id: message.chat.id, text: "OK")
+      bot.api.send_message(chat_id: message.chat.id, text: "OK: #{Process.pid}")
     else
       bot.api.send_message(chat_id: message.chat.id, text: "Unable to parse command")
     end
