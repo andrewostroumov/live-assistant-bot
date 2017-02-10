@@ -3,6 +3,8 @@ require_relative "transaction"
 
 token = ENV["TELEGRAM_TOKEN"]
 
+p ENV
+
 database_config = YAML.load_file("database.yml")
 logger = Logger.new(STDOUT)
 
