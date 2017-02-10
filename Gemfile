@@ -4,6 +4,7 @@ source "https://rubygems.org"
 gem "telegram-bot-ruby"
 gem "activerecord"
 gem "mysql2"
+gem "dotenv"
 
 group :development do
   gem "pry"
