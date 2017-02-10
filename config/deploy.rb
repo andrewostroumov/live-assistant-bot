@@ -2,7 +2,10 @@
 lock "3.7.2"
 
 set :application, "live_assistant_bot"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :repo_url, "git@github.com:andrewostroumov/live-assistant-bot.git"
+
+set :rbenv_type, :user
+set :rbenv_ruby, "2.4.0"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
