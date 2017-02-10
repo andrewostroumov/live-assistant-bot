@@ -24,13 +24,27 @@ set :rbenv_ruby, "2.4.0"
 # set :pty, true
 
 # Default value for :linked_files is []
-# append :linked_files, "config/database.yml", "config/secrets.yml"
+append :linked_files, ".env"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+
+append :linked_dirs, "log"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+after "deploy:finished", "initialize"
+
+task :initialize do
+  on roles(:app) do
+    within "#{current_path}" do
+      with assistant_env: :production do
+        execute("ruby init.rb &")
+      end
+    end
+  end
+end
